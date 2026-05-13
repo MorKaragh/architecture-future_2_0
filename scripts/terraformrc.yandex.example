@@ -1,0 +1,13 @@
+# Скопируйте в домашний каталог под именем .terraformrc:
+#   cp scripts/terraformrc.yandex.example ~/.terraformrc
+# Terraform читает только ~/.terraformrc (имя с точкой).
+
+provider_installation {
+  network_mirror {
+    url     = "https://terraform-mirror.yandexcloud.net/"
+    include = ["registry.terraform.io/*/*"]
+  }
+  direct {
+    exclude = ["registry.terraform.io/*/*"]
+  }
+}

@@ -1,0 +1,13 @@
+cloud_id             = "b1g..."
+folder_id            = "b1g..."
+zone                 = "ru-central1-a"
+service_account_id   = "aje..."
+
+# Либо задайте уникальное имя целиком:
+# bucket_name = "my-unique-tf-state-bucket"
+
+# Либо оставьте bucket_name пустым в .tfvars и задайте только префикс:
+# bucket_prefix = "tfstate-myorg"
+
+create_static_access_key = true
+# versioning = true  # только если у СА достаточно прав; иначе 403 на PutBucketVersioning

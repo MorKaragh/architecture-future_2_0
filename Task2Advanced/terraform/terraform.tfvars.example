@@ -1,0 +1,19 @@
+cloud_id  = "b1g..."
+folder_id = "b1g..."
+zone      = "ru-central1-a"
+subnet_id = "e9b..."
+
+vm_name = "future20-task2"
+
+cores            = 2
+memory           = 4
+attach_disk_size = 20
+attach_disk_type = "network-hdd"
+boot_disk_size   = 20
+
+labels = {
+  environment = "ci"
+  project     = "future20"
+}
+
+enable_nat = true

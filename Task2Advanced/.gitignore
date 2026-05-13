@@ -1,0 +1,17 @@
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.crash.log
+terraform/crash.log
+terraform/backend.auto.hcl
+terraform/backend.generated.hcl
+terraform/terraform.tfvars
+terraform/*.auto.tfvars
+
+bootstrap/.terraform/
+bootstrap/*.tfstate
+bootstrap/*.tfstate.*
+bootstrap/terraform.tfvars
+bootstrap/*.auto.tfvars
+bootstrap/crash.log
+bootstrap/.crash.log

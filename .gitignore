@@ -216,3 +216,24 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Любые каталоги context (локальные материалы заданий, на любой глубине)
+**/context/
+
+# Terraform: кэш провайдеров и локальное состояние (не часть решения задания)
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfplan
+tfplan
+
+# Локальные параметры S3-backend (не коммитить: ключи, bucket)
+**/backend.auto.hcl
+**/backend.generated.hcl
