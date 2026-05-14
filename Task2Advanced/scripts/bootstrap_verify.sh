@@ -4,7 +4,7 @@
 # Из корня репозитория:
 #   ./Task2Advanced/scripts/bootstrap_verify.sh
 #   ./Task2Advanced/scripts/bootstrap_verify.sh --live
-# Опции: --skip-fmt, --no-terraformrc (как в verify_taskadvanced1), --live
+# Опции: --skip-fmt, --no-terraformrc (как в Task1Advanced/scripts/verify_taskadvanced1), --live
 
 set -euo pipefail
 

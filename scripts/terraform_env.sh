@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Переменные Terraform (TF_VAR_*) для TaskAdvanced1.
+# Переменные Terraform (TF_VAR_*) для Task1Advanced.
 # При настроенном yc и типовой сети в каталоге можно выставить только то, чего нет в config:
 #   cloud_id / folder_id / zone — из yc config;
 #   subnet — подсеть с именем default-<зона> или первая подсеть в этой зоне (yc vpc subnet list);

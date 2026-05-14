@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Проверка TaskAdvanced1 против реального Yandex Cloud: terraform init + plan.
+# Проверка Task1Advanced против реального Yandex Cloud: terraform init + plan.
 # Нужны yc и python3 для автоподстановки TF_VAR_* через scripts/terraform_env.sh при отсутствии
 # переменных. YC_TOKEN либо YC_SERVICE_ACCOUNT_ID + yc (scripts/auth_cloud.sh).
 #
 # Примеры (из корня репозитория):
-#   ./TaskAdvanced1/scripts/verify_taskadvanced1_live.sh
-#   ./TaskAdvanced1/scripts/verify_taskadvanced1_live.sh stage
-#   ./TaskAdvanced1/scripts/verify_taskadvanced1_live.sh prod --apply   # осторожно
+#   ./Task1Advanced/scripts/verify_taskadvanced1_live.sh
+#   ./Task1Advanced/scripts/verify_taskadvanced1_live.sh stage
+#   ./Task1Advanced/scripts/verify_taskadvanced1_live.sh prod --apply   # осторожно
 
 set -euo pipefail
 

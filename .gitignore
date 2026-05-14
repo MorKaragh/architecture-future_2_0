@@ -217,6 +217,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# diagrams.net / draw.io — локальные бэкапы (не для сдачи)
+*.bkp
+
 # Любые каталоги context (локальные материалы заданий, на любой глубине)
 **/context/
 

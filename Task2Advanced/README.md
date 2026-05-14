@@ -18,6 +18,7 @@
 | `scripts/local_stack.sh` | Один проход: auth, `terraform_env.sh`, ключи из bootstrap, `backend.auto.hcl`, `init` + `plan` / `apply` |
 | `scripts/cleanup_stack.sh` | Удаление: сначала основной стек (remote state), затем bootstrap (бакет с `force_destroy`, ключ) |
 | `.github/workflows/terraform-task2-advanced.yml` (корень репозитория) | Пайплайн GitHub Actions |
+| `img/pipeline_screenshot.png` | Скриншот успешных проверок workflow в GitHub |
 
 ## Bootstrap бакета под state
 
@@ -68,6 +69,10 @@ terraform init -backend-config=backend.auto.hcl
 ## GitHub Actions
 
 Файл: `.github/workflows/terraform-task2-advanced.yml`.
+
+Пример итога проверок в PR или после `push` в `main`: `fmt + validate` и `plan` завершились успешно, job `apply` отмечен как пропущенный (типично для обычного push, без `workflow_dispatch` с последующим approval среды).
+
+![Проверки GitHub Actions: Task2Advanced Terraform](img/pipeline_screenshot.png)
 
 ### Триггеры
 
@@ -131,7 +136,7 @@ terraform init -backend-config=backend.auto.hcl
 
 ### `scripts/bootstrap_verify.sh`
 
-Без `--live`: `terraform fmt -check -recursive` по всему `Task2Advanced`, затем изолированный `TF_DATA_DIR`, в `bootstrap/` — `init` и `validate` с фиктивными переменными (API Yandex не вызывается). С `--live`: тот же `auth_cloud.sh`, реальные `TF_VAR_*`, `terraform plan -detailed-exitcode` (код 2 трактуется как допустимый сценарий при отсутствии изменений или до первого apply). Опции `--skip-fmt`, `--no-terraformrc` — по смыслу как в `TaskAdvanced1/scripts/verify_taskadvanced1.sh`.
+Без `--live`: `terraform fmt -check -recursive` по всему `Task2Advanced`, затем изолированный `TF_DATA_DIR`, в `bootstrap/` — `init` и `validate` с фиктивными переменными (API Yandex не вызывается). С `--live`: тот же `auth_cloud.sh`, реальные `TF_VAR_*`, `terraform plan -detailed-exitcode` (код 2 трактуется как допустимый сценарий при отсутствии изменений или до первого apply). Опции `--skip-fmt`, `--no-terraformrc` — по смыслу как в `Task1Advanced/scripts/verify_taskadvanced1.sh`.
 
 ### `scripts/local_stack.sh`
 

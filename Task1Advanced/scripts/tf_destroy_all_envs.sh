@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Удаляет инфраструктуру во всех средах TaskAdvanced1 (dev, stage, prod), где есть terraform state.
+# Удаляет инфраструктуру во всех средах Task1Advanced (dev, stage, prod), где есть terraform state.
 # Из корня репозитория. Нужны те же TF_VAR_* / YC_TOKEN, что и для apply.
 
 set -euo pipefail

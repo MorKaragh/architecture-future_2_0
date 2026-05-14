@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Поднимает ВМ во всех средах TaskAdvanced1 (dev, stage, prod), ждёт RUNNING, проверяет outputs.
+# Поднимает ВМ во всех средах Task1Advanced (dev, stage, prod), ждёт RUNNING, проверяет outputs.
 # Из корня репозитория. Нужны yc, python3, terraform; TF_VAR_* и YC_TOKEN (см. scripts/terraform_env.sh, auth_cloud.sh).
 
 set -euo pipefail

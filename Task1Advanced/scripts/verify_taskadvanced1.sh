@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Проверка TaskAdvanced1: Terraform в PATH, форматирование, init + validate
+# Проверка Task1Advanced: Terraform в PATH, форматирование, init + validate
 # по каждому окружению. Реальные ID облака не нужны (подставляются фиктивные
 # значения только для прохождения validate). Облако и API не вызываются.
 #
-# Использование: из корня репозитория — ./TaskAdvanced1/scripts/verify_taskadvanced1.sh
+# Использование: из корня репозитория — ./Task1Advanced/scripts/verify_taskadvanced1.sh
 # Опции:
 #   --skip-fmt     не запускать terraform fmt -check
 #   --no-terraformrc  не предупреждать об отсутствии ~/.terraformrc
@@ -71,7 +71,7 @@ TMPBASE=$(mktemp -d)
 trap 'rm -rf "${TMPBASE}"' EXIT
 
 # Копия конфигурации во временный каталог: init не пишет .terraform и lock в ваши envs/*.
-WORK="${TMPBASE}/TaskAdvanced1"
+WORK="${TMPBASE}/Task1Advanced"
 cp -a "${TF_ROOT}" "${WORK}"
 
 for env in dev stage prod; do
