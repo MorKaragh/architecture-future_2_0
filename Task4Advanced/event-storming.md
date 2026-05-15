@@ -19,6 +19,7 @@
 | Открыть эпизод лечения | `EncounterOpened` | Clinical Care | Clinical Operations, Analytics & Data Products | Ресурсы и мощность, операционные дашборды |
 | Назначить исследование | `StudyOrdered` | Diagnostics & Studies | AI Medical Run (опционально), Clinical Operations | Очередь аппаратов/лаборатории, триггер ИИ-пайплайна |
 | Зафиксировать результат исследования | `StudyCompleted` | Diagnostics & Studies | Clinical Care, AI Medical Run | Обновление клинической картины, вход для моделей |
+| Скорректировать результат исследования | `StudyCorrected` | Diagnostics & Studies | Clinical Care, AI Medical Run | Юридически значимое исправление результата и переоценка зависимых заключений |
 | Запустить ИИ-анализ | (внутренняя операция) | AI Medical Run | — | — |
 | Завершить ИИ-анализ | `AIMedicalRunCompleted` | AI Medical Run | Clinical Care, Analytics & Data Products (агрегаты) | Встраивание заключения в эпизод, мониторинг качества |
 | Оформить кредитный договор | `CreditAgreementCreated` | Lending | Accounts & Payments, Analytics & Data Products | Счета, проводки, риск-витрины |
@@ -32,14 +33,14 @@
 | От (источник события) | К (политика или проекция) | Подпись на стрелке |
 |-----------------------|---------------------------|---------------------|
 | Clinical Care | Event Backbone | `PatientRegistered`, `EncounterOpened`, `EncounterClosed` |
-| Diagnostics & Studies | Event Backbone | `StudyOrdered`, `StudyCompleted` |
+| Diagnostics & Studies | Event Backbone | `StudyOrdered`, `StudyCompleted`, `StudyCorrected` |
 | AI Medical Run | Event Backbone | `AIMedicalRunCompleted`, `AIMedicalRunFailed` |
 | Lending | Event Backbone | `CreditAgreementCreated`, `CreditAgreementActivated` |
 | Accounts & Payments | Event Backbone | `PaymentPosted`, `AccountBalanceChanged` |
 | Clinical Operations | Event Backbone | `ShiftAssigned`, `InventoryThresholdBreached` |
 | External Integration | Event Backbone | `PartnerCatalogUpdated`, `EquipmentShipmentStatusChanged` |
 | Event Backbone | Analytics & Data Products | Потоковые и пакетные витрины |
-| Event Backbone | IAM & Consent | Реакции на отзыв согласия (блокировка потоков) |
+| Event Backbone | Clinical Care, Diagnostics & Studies, AI Medical Run, Analytics & Data Products, Lending | `ConsentUpdated`: остановка обработки, маскирование или отзыв доступа |
 
 ## Notes для диаграммы
 
@@ -57,14 +58,16 @@ sequenceDiagram
   participant LN as Lending
   participant AP as Accounts and Payments
   participant EB as Event Backbone
+  participant IAM as IAM and Consent
   participant ADP as Analytics and Data Products
 
   CC->>EB: PatientRegistered
+  EB-->>IAM: создать/связать идентичность
   EB-->>ADP: проекция витрины клиентов
   CC->>EB: EncounterOpened
-  CC->>DS: команда Назначить исследование
   DS->>EB: StudyOrdered
   DS->>EB: StudyCompleted
+  DS->>EB: StudyCorrected
   EB-->>AI: триггер запуска (политика)
   AI->>EB: AIMedicalRunCompleted
   EB-->>CC: обновить эпизод (политика)
@@ -82,15 +85,17 @@ flowchart LR
     C1[Зарегистрировать пациента]
     C2[Назначить исследование]
     C3[Завершить исследование]
-    C4[Запустить ИИ]
-    C5[Оформить кредит]
+    C4[Скорректировать исследование]
+    C5[Запустить ИИ]
+    C6[Оформить кредит]
   end
   subgraph events[События]
     E1[PatientRegistered]
     E2[StudyOrdered]
     E3[StudyCompleted]
-    E4[AIMedicalRunCompleted]
-    E5[CreditAgreementCreated]
+    E4[StudyCorrected]
+    E5[AIMedicalRunCompleted]
+    E6[CreditAgreementCreated]
   end
   subgraph policies[Политики / проекции]
     P1[Витрина клиентов]
@@ -104,9 +109,11 @@ flowchart LR
   C3 --> E3
   C4 --> E4
   C5 --> E5
+  C6 --> E6
 
   E1 --> P1
   E3 --> P2
-  E4 --> P3
-  E5 --> P4
+  E4 --> P2
+  E5 --> P3
+  E6 --> P4
 ```

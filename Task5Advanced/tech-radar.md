@@ -56,8 +56,8 @@
 | Кольцо | Доля позиций (ориентир) | Назначение |
 |--------|-------------------------|------------|
 | Adopt | ~40% | Облако, EDA, DDD, self-service BI, Kubernetes, IaC, основные языки |
-| Trial | ~35% | Data Mesh, контракты, потоки, каталог, dbt, lakehouse-элементы |
-| Assess | ~15% | Feature Store, полноценный lakehouse |
+| Trial | ~35% | Data Mesh, контракты, потоки, каталог, dbt |
+| Assess | ~15% | Feature Store, Lakehouse-паттерн |
 | Hold | ~10% | SQL Server 2008 как DWH-ядро, PowerBuilder, расширение Camel |
 
 Диаграмма «кольца» может быть построена в draw.io или Thoughtworks Radar по строкам таблиц выше: ось — домены (клиники, финтех, ИИ, интеграции), концентрические кольца — Adopt / Trial / Assess / Hold.

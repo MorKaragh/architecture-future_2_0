@@ -45,15 +45,18 @@
 
 | Событие | Подписчик | Реакция |
 |---------|-----------|---------|
+| `PatientRegistered` | IAM & Consent | Создание или связывание цифровой идентичности пациента, проверка согласий |
 | `PatientRegistered` | Analytics & Data Products | Обновление витрины «клиенты/поток» без PHI |
 | `PatientRegistered` | Lending | Инициация KYC/скоринга при связке продукта |
 | `EncounterOpened` | Clinical Operations | Резервирование ресурсов (политика) |
 | `StudyCompleted` | AI Medical Run | Автозапуск модели по политике модальности |
+| `StudyCorrected` | Clinical Care | Обновление клинической записи ссылкой на корректирующий результат |
+| `StudyCorrected` | AI Medical Run | Переоценка необходимости повторного инференса |
 | `AIMedicalRunCompleted` | Clinical Care | Прикрепление заключения к эпизоду (черновик для врача) |
 | `CreditAgreementCreated` | Accounts & Payments | Создание счетовых объектов и лимитов |
 | `CreditAgreementActivated` | Accounts & Payments | Активация графика списаний |
 | `PaymentPosted` | Analytics & Data Products | Финансовые потоки и касса |
-| `ConsentUpdated` | Event consumers | Остановка/маскирование потоков по политике |
+| `ConsentUpdated` | Clinical Care, Diagnostics & Studies, AI Medical Run, Analytics & Data Products, Lending | Остановка обработки, маскирование или отзыв доступа по политике согласия |
 
 ## Совместимость и эволюция
 

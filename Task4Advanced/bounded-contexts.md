@@ -34,6 +34,8 @@
 | Analytics & Data Products | Все BC | Conformist на read-моделях | Потребляет события и снимки, не изменяет первичку |
 | External Integration | Clinical Operations, Lending | Anti-Corruption Layer | Внешние модели не протекают в ядро |
 
+**Разделение регистрации и идентичности:** `Clinical Care` фиксирует факт появления пациента в клиническом контуре и публикует `PatientRegistered`. `IAM & Consent` остаётся владельцем цифровой учётной записи, ролей и согласий; он подписывается на событие регистрации, создаёт или связывает идентичность и далее публикует `AccessGranted` / `ConsentUpdated`.
+
 ## Таблица компонентов для диаграммы bounded contexts
 
 | Название на диаграмме | Тип |
@@ -56,7 +58,7 @@
 |----|---|---------|
 | IAM & Consent | Event Backbone | Публикация `AccessGranted`, `ConsentUpdated` |
 | Clinical Care | Event Backbone | `PatientRegistered`, `EncounterOpened`, `EncounterClosed` |
-| Diagnostics & Studies | Event Backbone | `StudyOrdered`, `StudyCompleted` |
+| Diagnostics & Studies | Event Backbone | `StudyOrdered`, `StudyCompleted`, `StudyCorrected` |
 | AI Medical Run | Event Backbone | `AIMedicalRunCompleted`, `AIMedicalRunFailed` |
 | Lending | Event Backbone | `CreditAgreementCreated`, `CreditAgreementActivated` |
 | Accounts & Payments | Event Backbone | `PaymentPosted`, `AccountBalanceChanged` |

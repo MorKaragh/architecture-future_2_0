@@ -1,6 +1,8 @@
 # Task2Advanced: Terraform + удалённый state + GitHub Actions
 
-Инфраструктура описана Terraform-кодом (модуль ВМ на базе провайдера Yandex Cloud). Состояние основного стека хранится только в S3-совместимом backend (по умолчанию Yandex Object Storage); файлы `terraform.tfstate` не коммитятся (отдельно bootstrap использует локальный state только в каталоге `bootstrap/`).
+Инфраструктура описана Terraform-кодом (модуль ВМ на базе провайдера Yandex Cloud). Состояние основного стека хранится только в S3-совместимом backend (по умолчанию Yandex Object Storage); файлы `terraform.tfstate` не коммитятся.
+
+`bootstrap/` — вспомогательный контур для учебного развёртывания бакета Object Storage и ключей доступа. Он нужен только для удобства локальной демонстрации полного цикла; по заданию обязательным результатом является основной стек в `terraform/` с S3 backend и CI/CD pipeline.
 
 ## Структура
 
@@ -11,7 +13,7 @@
 | `terraform/backend.ci.template` | Шаблон backend для CI (плейсхолдеры `@BUCKET@`, `@KEY@`) |
 | `terraform/terraform.tfvars.example` | Пример входных переменных без секретов |
 | `modules/vm/` | Модуль вычислительной ВМ и дополнительного диска |
-| `bootstrap/` | Однократное создание бакета под remote state (локальный `terraform.tfstate` только у bootstrap) |
+| `bootstrap/` | Вспомогательное однократное создание бакета под remote state для учебного проекта |
 | `scripts/render-backend-ci.sh` | Сборка `terraform/backend.generated.hcl` из шаблона и переменных окружения |
 | `scripts/bootstrap_apply.sh` | Apply bootstrap с тем же `YC_SERVICE_ACCOUNT_ID`, что и в задании 1 |
 | `scripts/bootstrap_verify.sh` | Проверка bootstrap без облака или `terraform plan` с `--live` |
@@ -23,6 +25,8 @@
 ## Bootstrap бакета под state
 
 Каталог `bootstrap/` — отдельный корень Terraform **без** remote backend: state остаётся локально в `bootstrap/terraform.tfstate`. Так обходится цикл «нужен бакет, чтобы включить S3-backend». После bootstrap в основной конфигурации `terraform/` включается S3-backend с созданным бакетом.
+
+Этот каталог не является обязательной частью решения по постановке: бакет и ключи можно создать вручную или использовать уже существующее S3-compatible хранилище. Поэтому к bootstrap применяются пониженные требования: он документирует учебный способ подготовки backend, а не заменяет требования к удалённому состоянию основного стека.
 
 Создаются: бакет Object Storage и опционально статический ключ S3 для указанного сервисного аккаунта (`create_static_access_key`, по умолчанию включено). Отдельная IAM-привязка на бакет **не** создаётся: при типичной роли `storage.editor` на каталог она даёт `PermissionDenied`, а доступ к объектам в бакетах каталога у этой роли уже есть. Секрет ключа попадает в **локальный** state bootstrap — храните файл state вне Git и с ограниченным доступом. Версионирование бакета по умолчанию выключено (`TF_VAR_versioning=false`): при `true` часто нужны права шире, иначе **403** на `PutBucketVersioning`.
 
