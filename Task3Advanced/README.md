@@ -27,7 +27,7 @@
 
 ### Уровень 3. Компоненты
 
-Детализация по вкладкам `C4.drawio`. Компонентная схема легаси-моста — на вкладке «Компоненты: легаси-мост» в `C4.drawio` (отдельного PNG в `img/` нет).
+Детализация по вкладкам `C4.drawio`. PNG-копии каждого компонентного среза лежат в `img/`.
 
 #### Событийная платформа
 
@@ -57,7 +57,11 @@
 
 ![C4 — компоненты, внешние интеграции](img/c4-l3-external-integrations.png)
 
-Файлы в `img/`: `c4-l2-containers.png`, `c4-l3-event-platform.png`, `c4-l3-data-reporting.png`, `c4-l3-access-identity.png`, `c4-l3-clinical.png`, `c4-l3-fintech.png`, `c4-l3-ai-medical.png`, `c4-l3-external-integrations.png`.
+#### Легаси-мост
+
+![C4 — компоненты, легаси-мост](img/c4-l3-legacy-bridge.png)
+
+Файлы в `img/`: `c4-l2-containers.png`, `c4-l3-event-platform.png`, `c4-l3-data-reporting.png`, `c4-l3-access-identity.png`, `c4-l3-clinical.png`, `c4-l3-fintech.png`, `c4-l3-ai-medical.png`, `c4-l3-external-integrations.png`, `c4-l3-legacy-bridge.png`.
 
 ## Согласованность целевой модели
 

@@ -48,11 +48,11 @@ Task1Advanced/
 
 ### Окружения и `*.tfvars`
 
-| Каталог | Файл | Профиль (кратко) |
-|---------|------|-------------------|
-| `envs/dev` | `dev.tfvars` | 2 vCPU, 4 ГБ, диск 20 ГБ, `future20-dev` |
-| `envs/stage` | `stage.tfvars` | 4 vCPU, 8 ГБ, диск 50 ГБ |
-| `envs/prod` | `prod.tfvars` | 8 vCPU, 16 ГБ, диск 200 ГБ, `network-ssd` |
+| Каталог | Файл | vCPU | RAM, ГБ | Доп. диск (ГБ / тип) | Загрузочный диск, ГБ | Имя ВМ |
+|---------|------|------|---------|----------------------|----------------------|--------|
+| `envs/dev` | `dev.tfvars` | 2 | 4 | 20 / `network-hdd` | 20 | `future20-dev` |
+| `envs/stage` | `stage.tfvars` | 4 | 8 | 50 / `network-hdd` | 30 | `future20-stage` |
+| `envs/prod` | `prod.tfvars` | 8 | 16 | 200 / `network-ssd` | 50 | `future20-prod` |
 
 Файлы `*.tfvars` содержат различающиеся параметры окружений. Для запуска без `scripts/terraform_env.sh` рядом лежат полные примеры `*.full.tfvars.example`: скопируйте нужный файл в `*.full.tfvars`, заполните `cloud_id`, `folder_id`, `zone`, `subnet_id`, `ssh_public_key` и используйте его как единственный `-var-file`.
 

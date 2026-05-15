@@ -60,6 +60,10 @@
 | Assess | ~15% | Feature Store, Lakehouse-паттерн |
 | Hold | ~10% | SQL Server 2008 как DWH-ядро, PowerBuilder, расширение Camel |
 
-Диаграмма «кольца» может быть построена в draw.io или Thoughtworks Radar по строкам таблиц выше: ось — домены (клиники, финтех, ИИ, интеграции), концентрические кольца — Adopt / Trial / Assess / Hold.
+## Визуализация радара
 
-Интерактивная версия на базе open-source **ThoughtWorks Build Your Own Radar**: каталог [byor-radar](byor-radar/) (данные `byor-radar/files/radar.csv`, запуск через `docker compose` — в [byor-radar/README.md](byor-radar/README.md)).
+Целевая визуализация — интерактивный радар на базе open-source **ThoughtWorks Build Your Own Radar**: каталог [byor-radar/](byor-radar/), исходные данные — [byor-radar/files/future20-tech-radar.csv](byor-radar/files/future20-tech-radar.csv), запуск через `docker compose` и точная ссылка для открытия описаны в [byor-radar/README.md](byor-radar/README.md). Квадранты: `techniques`, `platforms`, `tools`, `languages & frameworks`; кольца: `adopt`, `trial`, `assess`, `hold`. Файлы `radar.csv` и `radar.json` в контейнере перезаписываются демо-данными Thoughtworks при каждом старте, поэтому используется отдельное имя CSV.
+
+Статический снимок интерактивного радара (для просмотра без Docker):
+
+![Целевой техрадар Future 2.0](img/radar.png)

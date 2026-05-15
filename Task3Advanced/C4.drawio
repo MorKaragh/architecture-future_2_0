@@ -1009,13 +1009,13 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Компоненты: легаси-мост" id="t3-comp-legacy">
-    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="700" math="0" shadow="0">
+    <mxGraphModel dx="1106" dy="1053" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="700" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <object placeholders="1" c4Name="Легаси-мост" c4Type="ContainerScopeBoundary" c4Application="Container" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="lg-boundary">
           <mxCell parent="1" style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="600" width="880" x="40" y="40" as="geometry" />
+            <mxGeometry height="600" width="990" x="40" y="40" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="lg-e1" edge="1" parent="1" source="lg-camel" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="lg-sql" value="">
@@ -1060,7 +1060,7 @@
         </mxCell>
         <object placeholders="1" c4Name="Маршруты Camel" c4Type="Component" c4Technology="Apache Camel" c4Description="Трансформации и антикоррупционные слои." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-camel">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="120" width="280" x="360" y="140" as="geometry" />
+            <mxGeometry height="120" width="280" x="370" y="140" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="SQL Server (вывод)" c4Type="Component" c4Technology="реплика чтения" c4Description="Временное хранилище остатков DWH." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-sql">
@@ -1070,12 +1070,12 @@
         </object>
         <object placeholders="1" c4Name="Адаптер Kafka" c4Type="Component" c4Technology="Kafka producer" c4Description="Публикация legacy-событий." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-kafka">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="100" width="240" x="660" y="150" as="geometry" />
+            <mxGeometry height="100" width="240" x="770" y="150" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Чтение легаси-DWH" c4Type="Component" c4Technology="views / CDC" c4Description="Совместимость отчётности." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-dwh">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="100" width="240" x="120" y="330" as="geometry" />
+            <mxGeometry height="100" width="240" x="60" y="330" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Данные и отчётность (внеш.)" c4Type="Component" c4Technology="lakehouse" c4Description="Целевой приём данных." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-lake">
@@ -1085,12 +1085,12 @@
         </object>
         <object placeholders="1" c4Name="Наследуемый ESB (внеш.)" c4Type="Component" c4Technology="SOAP/JMS" c4Description="Входящий синхронный трафик." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-esb">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="100" width="220" x="120" y="150" as="geometry" />
+            <mxGeometry height="100" width="220" x="50" y="150" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Событийная платформа (внеш.)" c4Type="Component" c4Technology="Kafka" c4Description="Целевая шина." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="lg-ext-k">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
-            <mxGeometry height="95" width="220" x="660" y="330" as="geometry" />
+            <mxGeometry height="95" width="220" x="780" y="332.5" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="lg-e6" edge="1" parent="1" source="lg-kafka" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="lg-ext-k" value="">

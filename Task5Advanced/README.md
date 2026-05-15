@@ -6,9 +6,10 @@
 
 | Файл / каталог | Содержание |
 |----------------|------------|
-| [tech-radar.md](tech-radar.md) | Таблицы радара по категориям; рекомендация визуализировать кольца в draw.io или Thoughtworks Radar |
+| [tech-radar.md](tech-radar.md) | Таблицы радара по категориям и ссылки на интерактивный радар + статический снимок |
 | [tco-analysis.md](tco-analysis.md) | Статьи затрат, сравнительные таблицы по годам, выводы и чувствительность |
 | [roadmap.md](roadmap.md) | Роли, фазы пилот — масштабирование — зрелость, связь с целями бизнеса, диаграмма Gantt в Mermaid |
-| [byor-radar/](byor-radar/) | Интерактивный радар (Docker Compose, CSV для BYOR); инструкция в [byor-radar/README.md](byor-radar/README.md) |
+| [byor-radar/](byor-radar/) | Целевая визуализация радара на base BYOR в Docker: основной вход — ссылка с `documentId` в [byor-radar/README.md](byor-radar/README.md); данные `byor-radar/files/future20-tech-radar.csv` |
+| [img/radar.png](img/radar.png) | Статический снимок интерактивного радара для просмотра без Docker |
 
-Исполняемого кода кроме опционального контейнера в `byor-radar` нет. Для печати роадмапа с Gantt используйте среду с рендером Mermaid (VS Code, GitHub, экспорт в PNG через mermaid-cli при необходимости).
+Целевая визуализация радара — интерактивный BYOR в `byor-radar/`. Для печати роадмапа с Gantt используйте среду с рендером Mermaid (VS Code, GitHub, экспорт в PNG через mermaid-cli при необходимости).

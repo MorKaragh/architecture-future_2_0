@@ -7,4 +7,4 @@ services:
       SERVER_NAMES: "localhost 127.0.0.1"
       RINGS: '["Adopt", "Trial", "Assess", "Hold"]'
     volumes:
-      - ./files:/opt/build-your-own-radar/files:ro
+      - ./files:/opt/build-your-own-radar/files
