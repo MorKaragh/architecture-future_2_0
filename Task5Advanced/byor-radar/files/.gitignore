@@ -1,0 +1,3 @@
+# Образ BYOR при старте перезаписывает radar.csv и radar.json из дистрибутива Thoughtworks — не коммитить.
+radar.csv
+radar.json
