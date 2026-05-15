@@ -10,7 +10,8 @@ Task1Advanced/
 │   ├── variables.tf
 │   ├── outputs.tf
 │   ├── versions.tf
-│   └── *.tfvars
+│   ├── *.tfvars
+│   └── *.full.tfvars.example
 ├── scripts/             # verify, apply/destroy по средам (только это задание)
 └── img/
     └── screenshot.png   # пример: три ВМ после apply
@@ -31,7 +32,7 @@ Task1Advanced/
 | `cores` | number | vCPU |
 | `memory` | number | RAM, ГБ |
 | `subnet_id` | string | Подсеть |
-| `ssh_public_key` | string | Публичный ключ (metadata) |
+| `ssh_public_key` | string | SSH-ключ для metadata; публичная часть ключа |
 | `ssh_user` | string | Учётная запись для ssh-keys (по умолчанию `ubuntu`) |
 | `attach_disk_size` | number | Размер дополнительного диска, ГБ |
 | `attach_disk_type` | string | Тип диска (`network-hdd`, `network-ssd`, …) |
@@ -53,6 +54,8 @@ Task1Advanced/
 | `envs/stage` | `stage.tfvars` | 4 vCPU, 8 ГБ, диск 50 ГБ |
 | `envs/prod` | `prod.tfvars` | 8 vCPU, 16 ГБ, диск 200 ГБ, `network-ssd` |
 
+Файлы `*.tfvars` содержат различающиеся параметры окружений. Для запуска без `scripts/terraform_env.sh` рядом лежат полные примеры `*.full.tfvars.example`: скопируйте нужный файл в `*.full.tfvars`, заполните `cloud_id`, `folder_id`, `zone`, `subnet_id`, `ssh_public_key` и используйте его как единственный `-var-file`.
+
 ---
 
 ## Запуск
@@ -70,6 +73,8 @@ Task1Advanced/
 
 ### Ручной `terraform` по одной среде
 
+Вариант с автоматическим заполнением облачных параметров из `yc config`:
+
 ```bash
 source scripts/terraform_env.sh
 source scripts/auth_cloud.sh   # если нет YC_TOKEN
@@ -80,6 +85,19 @@ terraform apply -var-file=dev.tfvars
 ```
 
 Для **stage** / **prod** замените каталог и файл на **`stage.tfvars`**, **`prod.tfvars`**.
+
+Вариант с одним полным var-file:
+
+```bash
+cd Task1Advanced/envs/dev
+cp dev.full.tfvars.example dev.full.tfvars
+# заполните cloud_id, folder_id, zone, subnet_id, ssh_public_key
+terraform init
+terraform plan  -var-file=dev.full.tfvars
+terraform apply -var-file=dev.full.tfvars
+```
+
+Файлы `*.full.tfvars` не коммитятся; в репозитории остаются только `*.full.tfvars.example`.
 
 ### Скрипты (из корня репозитория)
 

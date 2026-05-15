@@ -1,0 +1,23 @@
+# Полный пример var-file для ручного запуска без scripts/terraform_env.sh.
+# Скопируйте в stage.full.tfvars и заполните значения своего облака.
+
+cloud_id       = "b1g..."
+folder_id      = "b1g..."
+zone           = "ru-central1-a"
+subnet_id      = "e9b..."
+ssh_public_key = "ssh-ed25519 AAAA... user@example"
+
+vm_name = "future20-stage"
+
+cores            = 4
+memory           = 8
+attach_disk_size = 50
+attach_disk_type = "network-hdd"
+boot_disk_size   = 30
+
+labels = {
+  environment = "stage"
+  project     = "future20"
+}
+
+enable_nat = true

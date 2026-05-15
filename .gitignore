@@ -240,3 +240,8 @@ tfplan
 # Локальные параметры S3-backend (не коммитить: ключи, bucket)
 **/backend.auto.hcl
 **/backend.generated.hcl
+
+# Локальные полные var-file для Task1Advanced (с cloud/subnet/ssh значениями)
+Task1Advanced/envs/**/*.full.tfvars
+
+REVIEW.md

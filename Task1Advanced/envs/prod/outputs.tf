@@ -21,3 +21,7 @@ output "external_ip" {
 output "attach_disk_id" {
   value = module.vm.attach_disk_id
 }
+
+output "boot_disk_id" {
+  value = module.vm.boot_disk_id
+}
